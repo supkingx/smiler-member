@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="smiler-member-model" />
+        <module name="smiler-member-core" />
+        <module name="smiler-member-service" />
+        <module name="smiler-member-dao" />
+        <module name="smiler-member-web" />
+        <module name="smiler-member-common" />
+        <module name="smiler-member-service-impl" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="smiler-member-common" options="-parameters" />
+      <module name="smiler-member-core" options="-parameters" />
+      <module name="smiler-member-dao" options="-parameters" />
+      <module name="smiler-member-model" options="-parameters" />
+      <module name="smiler-member-service" options="-parameters" />
+      <module name="smiler-member-service-impl" options="-parameters" />
+      <module name="smiler-member-web" options="-parameters" />
+    </option>
+  </component>
+</project>
