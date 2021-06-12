@@ -18,7 +18,7 @@
         <encoder>
             <pattern>%d [%level] [%thread] %logger{15}:%line %msg%n</pattern>
         </encoder>
-<!--     只保留error级别的日志   -->
+<!--     只保留error级别的日志       -->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
