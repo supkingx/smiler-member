@@ -7,6 +7,8 @@ import com.smiler.member.model.po.UserPo;
 import com.smiler.member.model.vo.UserVo;
 import com.smiler.member.service.UserBaseService;
 import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class, timeout = 2, transactionManager = CommonConstant.PRIMARY_DATA_SOURCE_TRANSACTION_MANAGER)
 public class UserBaseServiceImpl implements UserBaseService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserBaseServiceImpl.class);
+
     @Autowired
     private UserBaseMapper userBaseMapper;
 
@@ -38,6 +42,10 @@ public class UserBaseServiceImpl implements UserBaseService {
 
     @Override
     public String testService() {
+        LOGGER.error("测试error日志");
+        LOGGER.info("测试info日志");
+        LOGGER.warn("测试warn日志");
+        LOGGER.debug("测试debug日志");
         return "king";
     }
 
