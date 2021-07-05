@@ -10,6 +10,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class UserBaseServiceImpl implements UserBaseService {
     }
 
     @Override
-    public String testService() {
+    public String testLog() {
         LOGGER.error("测试error日志");
         LOGGER.info("测试info日志");
         LOGGER.warn("测试warn日志");
@@ -62,6 +63,15 @@ public class UserBaseServiceImpl implements UserBaseService {
             return;
         }
         userBaseMapper.insertUser(orikaFacade.mapAsList(userVos, UserPo.class));
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, timeout = 2, transactionManager = CommonConstant.PRIMARY_DATA_SOURCE_TRANSACTION_MANAGER)
+    public void insertUserByIdGenerate(List<UserVo> userVos) {
+        if (CollectionUtils.isEmpty(userVos)) {
+            return;
+        }
+        userBaseMapper.insertUserByIdGenerate(orikaFacade.mapAsList(userVos, UserPo.class));
     }
 
     @Override
