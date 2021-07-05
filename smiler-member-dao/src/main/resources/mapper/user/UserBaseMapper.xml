@@ -22,6 +22,14 @@
         </foreach>
     </insert>
 
+    <insert id="insertUserByIdGenerate">
+        insert into user(id,username,birthday,gender,address)
+        VALUES
+        <foreach collection="list" item="user" separator="," open="(" close=")">
+            #{user.id},#{user.username},#{user.birthday},#{user.gender},#{user.address}
+        </foreach>
+    </insert>
+
     <update id="updateUserById">
         <foreach collection="list" item="user" separator=";">
             UPDATE user

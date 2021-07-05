@@ -1,32 +1,27 @@
 package com.smiler.member.service;
 
-
-import com.smiler.member.model.po.UserPo;
 import com.smiler.member.model.vo.UserVo;
 
 import java.math.BigInteger;
 import java.util.List;
 
 /**
- * @description:
+ * @description: 基础类，使用sharding数据源
  * @Author: wangchao
- * @Date: 2021/5/8
+ * @Date: 2021/7/3
  */
-public interface UserBaseService {
+public interface UserBaseShardingService {
+
     /**
      * 查询所有用户
      *
      * @return
      */
-    List<UserPo> queryAllUsers();
+    List<UserVo> queryAllUsers();
 
-    String testLog();
-
-    UserPo queryUserById(BigInteger id);
+    UserVo queryUserById(BigInteger id);
 
     void insertUser(List<UserVo> userVos);
-
-    void insertUserByIdGenerate(List<UserVo> userVos);
 
     void updateUserById(List<UserVo> userPos);
 }

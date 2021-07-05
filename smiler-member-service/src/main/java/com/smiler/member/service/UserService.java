@@ -14,6 +14,8 @@ public interface UserService {
 
     void insertUser(List<UserVo> userVos);
 
+    void addUserBatch(List<UserVo> userVos);
+
     /**
      * 综合搜索
      *

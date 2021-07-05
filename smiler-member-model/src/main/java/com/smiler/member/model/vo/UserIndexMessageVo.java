@@ -1,4 +1,4 @@
-package com.smiler.member.model.po;
+package com.smiler.member.model.vo;
 
 import com.smiler.member.common.Vo;
 
@@ -16,11 +16,21 @@ public class UserIndexMessageVo extends Vo {
 
     private List<BigInteger> ids;
 
+    private Integer type;
+
     public List<BigInteger> getIds() {
         return ids;
     }
 
     public void setIds(List<BigInteger> ids) {
         this.ids = ids;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

@@ -1,5 +1,4 @@
-package com.smiler.member.dao.user;
-
+package com.smiler.member.dao2.user;
 
 import com.smiler.member.model.po.UserPo;
 
@@ -9,9 +8,9 @@ import java.util.List;
 /**
  * @description:
  * @Author: wangchao
- * @Date: 2021/5/8
+ * @Date: 2021/7/1
  */
-public interface UserBaseMapper {
+public interface UserMapper {
 
     List<UserPo> queryAllUsers();
 
@@ -19,7 +18,7 @@ public interface UserBaseMapper {
 
     void insertUser(List<UserPo> userPos);
 
-    void insertUserByIdGenerate(List<UserPo> userPos);
-
     void updateUserById(List<UserPo> userPos);
+
+    void addKingUser(List<UserPo> userPos);
 }
