@@ -1,4 +1,4 @@
-package com.smiler.member.tool;
+package com.smiler.member.helper;
 
 import com.alibaba.fastjson.JSON;
 import com.smiler.member.model.vo.UserIndexMessageVo;

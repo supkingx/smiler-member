@@ -22,8 +22,7 @@ public class UserVo extends Vo {
     private BigInteger id;
 
     private String username;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date birthday;
+    private String birthday;
     private Byte gender;
     private String address;
 
