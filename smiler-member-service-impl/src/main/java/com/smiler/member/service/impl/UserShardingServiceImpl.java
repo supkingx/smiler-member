@@ -5,7 +5,7 @@ import com.smiler.member.model.enums.MessageTypeEnum;
 import com.smiler.member.model.vo.UserVo;
 import com.smiler.member.service.UserBaseShardingService;
 import com.smiler.member.service.UserShardingService;
-import com.smiler.member.tool.UserEsMsgSender;
+import com.smiler.member.helper.UserEsMsgSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

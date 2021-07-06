@@ -13,7 +13,7 @@ import com.smiler.member.search.api.user.facade.UserFacade;
 import com.smiler.member.search.api.user.model.UserResponse;
 import com.smiler.member.service.UserBaseService;
 import com.smiler.member.service.UserService;
-import com.smiler.member.tool.UserEsMsgSender;
+import com.smiler.member.helper.UserEsMsgSender;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
