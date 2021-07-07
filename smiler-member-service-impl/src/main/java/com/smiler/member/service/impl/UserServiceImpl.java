@@ -4,16 +4,17 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.smiler.member.core.idWorker.IdGenerate;
 import com.smiler.member.core.orika.OrikaFacade;
+import com.smiler.member.helper.UserEsMsgSender;
 import com.smiler.member.model.enums.MessageTypeEnum;
 import com.smiler.member.model.po.UserPo;
 import com.smiler.member.model.so.UserSo;
 import com.smiler.member.model.vo.UserIndexMessageVo;
 import com.smiler.member.model.vo.UserVo;
-import com.smiler.member.search.api.user.facade.UserFacade;
+import com.smiler.member.search.api.user.facade.UserSearchFacade;
 import com.smiler.member.search.api.user.model.UserResponse;
+import com.smiler.member.search.model.so.UserSearch;
 import com.smiler.member.service.UserBaseService;
 import com.smiler.member.service.UserService;
-import com.smiler.member.helper.UserEsMsgSender;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
     private UserEsMsgSender userEsMsgSender;
 
     @Reference
-    private UserFacade userFacade;
+    private UserSearchFacade userSearchFacade;
 
     @Autowired
     private OrikaFacade orikaFacade;
@@ -71,7 +72,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserVo> queryUsersComprehensive(UserSo userSo) {
-        List<UserResponse> userResponses = userFacade.queryUsersComprehensive(userSo);
+        List<UserResponse> userResponses = userSearchFacade.queryUsersComprehensive(orikaFacade.map(userSo, UserSearch.class));
         List<UserVo> userVos = orikaFacade.mapAsList(userResponses, UserVo.class);
         return userVos;
     }
