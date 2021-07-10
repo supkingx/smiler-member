@@ -36,9 +36,10 @@
         <dubbo.starter.version>0.2.0</dubbo.starter.version>
         <zookeeper.version>3.7.0</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
-        <smiler.member.search.version>1.0.3</smiler.member.search.version>
+        <smiler.member.search.version>1.0.5</smiler.member.search.version>
         <spring-kafka.version>2.5.4.RELEASE</spring-kafka.version>
         <commons-lang3.version>3.11</commons-lang3.version>
+        <sentinel.version>2.2.5.RELEASE</sentinel.version>
     </properties>
 
     <dependencyManagement>
@@ -87,6 +88,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${sentinel.version}</version>
             </dependency>
 
             <dependency>
