@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @ConditionalOnBean(name = CommonConstant.PRIMARY_DATA_SOURCE_NAME)
-public class MybatisConfig {
+public class MyBatisConfig {
 
     @Bean(CommonConstant.PRIMARY_SQL_SESSION_FACTORY)
     public SqlSessionFactory sqlSessionFactory(@Autowired @Qualifier(CommonConstant.PRIMARY_DATA_SOURCE_NAME) DataSource dataSource) throws Exception {

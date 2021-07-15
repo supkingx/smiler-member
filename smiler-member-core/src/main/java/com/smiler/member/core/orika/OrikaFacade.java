@@ -1,5 +1,6 @@
 package com.smiler.member.core.orika;
 
+import com.github.pagehelper.Page;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,6 +43,23 @@ public class OrikaFacade {
     }
 
     public <S, T> List<T> mapAsList(List<S> source, Class<T> target) {
+        List<T> list;
+        if (CollectionUtils.isEmpty(source)) {
+            list = Collections.emptyList();
+        } else {
+            list = mapperFacade.mapAsList(source, target);
+        }
+
+        if (source instanceof Page) {
+            Page<S> sourcePage = (Page<S>) source;
+            Page<T> page = new Page<>();
+            page.setPageSize(sourcePage.getPageSize());
+            page.setPages(sourcePage.getPages());
+            page.setPageNum(sourcePage.getPageNum());
+            page.setTotal(sourcePage.getTotal());
+            page.addAll(list);
+            return page;
+        }
         return mapperFacade.mapAsList(source, target);
     }
 }

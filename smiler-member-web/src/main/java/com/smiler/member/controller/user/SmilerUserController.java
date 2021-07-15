@@ -2,7 +2,6 @@ package com.smiler.member.controller.user;
 
 import com.smiler.member.model.so.UserSo;
 import com.smiler.member.model.vo.UserVo;
-import com.smiler.member.search.model.so.UserSearch;
 import com.smiler.member.service.SmilerUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
