@@ -1,9 +1,7 @@
 package com.smiler.member.config;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInterceptor;
 import com.smiler.member.core.interceptor.SoInterceptor;
-import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 
 import javax.sql.DataSource;
