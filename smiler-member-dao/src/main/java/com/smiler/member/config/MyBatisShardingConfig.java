@@ -19,14 +19,13 @@ import javax.sql.DataSource;
  * @Date: 2021/6/30
  */
 @Configuration
-public class MyBatisShardingConfig {
+public class MyBatisShardingConfig extends AbstractMyBatisConfig{
 
     @Bean(CommonConstant.SHARDING_SQL_SESSION_FACTORY)
     public SqlSessionFactory sqlSessionFactory2(@Autowired @Qualifier(CommonConstant.SHARDING_DATA_SOURCE_NAME) DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        SqlSessionFactoryBean sqlSessionFactoryBean = getSqlSessionFactoryBean(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:mapper2/**/*.xml"));
-        sqlSessionFactoryBean.setDataSource(dataSource);
         return sqlSessionFactoryBean.getObject();
     }
 

@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.smiler</groupId>
-            <artifactId>smiler-member-common</artifactId>
+            <artifactId>smiler-member-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
