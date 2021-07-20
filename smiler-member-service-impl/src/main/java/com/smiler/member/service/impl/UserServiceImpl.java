@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.smiler.member.core.idWorker.IdGenerate;
 import com.smiler.member.core.orika.OrikaFacade;
-import com.smiler.member.helper.UserEsMsgSender;
+import com.smiler.member.helper.UserEsMsgSenderHelper;
 import com.smiler.member.model.enums.MessageTypeEnum;
 import com.smiler.member.model.po.UserPo;
 import com.smiler.member.model.so.UserSo;
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private UserEsMsgSender userEsMsgSender;
+    private UserEsMsgSenderHelper userEsMsgSenderHelper;
 
     @Reference
     private UserSearchFacade userSearchFacade;
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         }
         userBaseService.insertUserByIdGenerate(userVos);
         // 发送消息到member-search
-        userEsMsgSender.sendMessage(idList, MessageTypeEnum.USER_ADD.getType());
+        userEsMsgSenderHelper.sendMessage(idList, MessageTypeEnum.USER_ADD.getType());
     }
 
     @Override

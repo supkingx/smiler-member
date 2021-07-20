@@ -18,8 +18,8 @@ public class FallbackHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BlockHandler.class);
 
-    public static List<UserVo> queryUsersComprehensiveFallbackHandler(UserSo userSo) {
-        LOGGER.error("Fallback by Sentinel queryUsersComprehensiveFallbackHandler,userSo:{}", JSON.toJSONString(userSo));
+    public static List<UserVo> queryUsersComprehensiveFallbackHandler(UserSo userSo,Throwable e) {
+        LOGGER.error("Fallback by Sentinel queryUsersComprehensiveFallbackHandler,userSo:{}", JSON.toJSONString(userSo),e);
         return Collections.emptyList();
     }
 }

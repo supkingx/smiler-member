@@ -18,9 +18,9 @@ import java.util.List;
  * @Date: 2021/6/28
  */
 @Component
-public class UserEsMsgSender {
+public class UserEsMsgSenderHelper {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserEsMsgSender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserEsMsgSenderHelper.class);
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
@@ -47,5 +47,4 @@ public class UserEsMsgSender {
         messageVo.setType(type);
         return JSON.toJSONString(messageVo);
     }
-
 }
