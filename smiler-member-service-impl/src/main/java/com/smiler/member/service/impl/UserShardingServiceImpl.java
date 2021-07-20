@@ -5,7 +5,7 @@ import com.smiler.member.model.enums.MessageTypeEnum;
 import com.smiler.member.model.vo.UserVo;
 import com.smiler.member.service.UserBaseShardingService;
 import com.smiler.member.service.UserShardingService;
-import com.smiler.member.helper.UserEsMsgSender;
+import com.smiler.member.helper.UserEsMsgSenderHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class UserShardingServiceImpl implements UserShardingService {
     private UserBaseShardingService userBaseShardingService;
 
     @Autowired
-    private UserEsMsgSender userEsMsgSender;
+    private UserEsMsgSenderHelper userEsMsgSenderHelper;
 
     @Override
     public void addUserBatch(List<UserVo> userVos) {
@@ -35,7 +35,7 @@ public class UserShardingServiceImpl implements UserShardingService {
             userVo.setId(idList.get(i.getAndIncrement()));
         }
         userBaseShardingService.insertUser(userVos);
-        userEsMsgSender.sendSuperMessage(idList, MessageTypeEnum.USER_ADD.getType());
+        userEsMsgSenderHelper.sendSuperMessage(idList, MessageTypeEnum.USER_ADD.getType());
     }
 
     @Override
