@@ -32,7 +32,7 @@ public class SmilerUserServiceImpl implements SmilerUserService {
     @Autowired
     private UserShardingService userShardingService;
 
-    @Reference
+    @Autowired(required = false)
     private UserSearchFacade userSearchFacade;
 
     @Autowired

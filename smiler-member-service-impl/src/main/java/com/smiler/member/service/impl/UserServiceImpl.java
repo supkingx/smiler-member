@@ -1,6 +1,5 @@
 package com.smiler.member.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.smiler.member.core.idWorker.IdGenerate;
 import com.smiler.member.core.orika.OrikaFacade;
@@ -41,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserEsMsgSenderHelper userEsMsgSenderHelper;
 
-    @Reference
+    @Autowired(required = false)
     private UserSearchFacade userSearchFacade;
 
     @Autowired
