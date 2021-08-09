@@ -1,9 +1,9 @@
 package com.smiler.member.service.impl;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.google.common.base.Preconditions;
 import com.smiler.member.core.annotation.AutoLock;
+import com.smiler.member.core.annotation.AutoLog;
 import com.smiler.member.core.orika.OrikaFacade;
 import com.smiler.member.model.so.UserSo;
 import com.smiler.member.model.vo.UserVo;
@@ -39,6 +39,7 @@ public class SmilerUserServiceImpl implements SmilerUserService {
     private OrikaFacade orikaFacade;
 
     @Override
+    @AutoLog(condition = "#userVo.username=='king'")
     @AutoLock(name = "#userVo.username", msg = "#userVo.username + '正在新建当中。。。'", expire = 5)
     public void addSmilerUser(UserVo userVo) {
         Preconditions.checkArgument(StringUtils.isNotEmpty(userVo.getUsername()), "姓名不能为空!");
@@ -48,6 +49,7 @@ public class SmilerUserServiceImpl implements SmilerUserService {
     }
 
     @Override
+    @AutoLog(condition = "#")
     @SentinelResource(value = "queryUsersComprehensive", blockHandlerClass = BlockHandler.class, blockHandler = "queryUsersComprehensiveBlockHandler",
             fallbackClass = FallbackHandler.class, fallback = "queryUsersComprehensiveFallbackHandler")
     public List<UserVo> queryUsersComprehensive(UserSo userSo) {
